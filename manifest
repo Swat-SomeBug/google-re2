@@ -1,0 +1,11 @@
+: 1
+name: re2
+version: 0.1.0-a.0.z
+summary: Google re2 C++ regex library
+license: BSD-style
+description-file: UPSTREAM.README.md
+url: https://github.com/google/re2/
+package-email: swat.somebug@gmail.com
+depends: * build2 >= 0.13.0
+depends: * bpkg >= 0.13.0
+#depends: libhello ^1.0.0

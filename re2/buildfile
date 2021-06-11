@@ -1,0 +1,31 @@
+
+lib{re2}: hxx{re2 set filtered_re2 stringpiece} cxx{**}
+
+# Build options.
+#
+cxx.poptions =+ "-I$out_root" "-I$src_root" "-I$src_base"
+
+# Export options.
+#
+lib{re2}: cxx.export.poptions = "-I$out_root" "-I$src_root" "-I$src_base"
+
+if($cxx.target.class != windows)
+  cxx.libs = -lpthread
+
+# For pre-releases use the complete version to make sure they cannot be used
+# in place of another pre-release or the final version. See the version module
+# for details on the version.* variable values.
+#
+if $version.pre_release
+  lib{re2}: bin.lib.version = @"-$version.project_id"
+else
+  lib{re2}: bin.lib.version = @"-$version.major.$version.minor" linux@9
+
+# Install into the re2/ subdirectory of, say, /usr/include/
+# recreating subdirectories.
+#
+hxx{*}:
+{
+  install        = include/re2/
+  install.subdir = true
+}
