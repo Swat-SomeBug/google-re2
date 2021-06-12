@@ -3,6 +3,6 @@ pub_hdrs = hxx{**}
 
 hxx{*}:
 {
-  install        = include/
+  install        = include/re2/
   install.subdir = true
 }
