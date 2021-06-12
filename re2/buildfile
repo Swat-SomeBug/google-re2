@@ -1,13 +1,19 @@
 
-lib{re2}: hxx{re2 set filtered_re2 stringpiece} cxx{**}
+pub = [dir_path] ../include
+include $pub
+
+lib{re2}: $pub/{$($pub/ pub_hdrs)} hxx{**} cxx{**}
 
 # Build options.
 #
-cxx.poptions =+ "-I$out_root" "-I$src_root" "-I$src_base"
+out_pfx_inc = [dir_path] $out_root/include/
+src_pfx_inc = [dir_path] $src_root/include/
+cxx.poptions =+ "-I$out_root" "-I$src_root" \
+                "-I$src_pfx_inc" "-I$src_base"
 
 # Export options.
 #
-lib{re2}: cxx.export.poptions = "-I$out_root" "-I$src_root" "-I$src_base"
+lib{re2}: cxx.export.poptions = "-I$out_root" "-I$src_root" "-I$src_pfx_inc"
 
 if($cxx.target.class != windows)
   cxx.libs = -lpthread
@@ -21,11 +27,5 @@ if $version.pre_release
 else
   lib{re2}: bin.lib.version = @"-$version.major.$version.minor" linux@9
 
-# Install into the re2/ subdirectory of, say, /usr/include/
-# recreating subdirectories.
-#
-hxx{*}:
-{
-  install        = include/re2/
-  install.subdir = true
-}
+
+hxx{**}: install = false

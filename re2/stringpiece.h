@@ -1,1 +1,0 @@
-../upstream/re2/stringpiece.h

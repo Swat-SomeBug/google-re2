@@ -1,4 +1,4 @@
-project = re2
+project = google-re2
 
 using version
 using config
