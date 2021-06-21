@@ -1,0 +1,7 @@
+: MIMICS_PCRE_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM

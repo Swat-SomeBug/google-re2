@@ -1,0 +1,7 @@
+: STRING_GENERATOR_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM

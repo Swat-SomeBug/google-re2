@@ -1,0 +1,7 @@
+: COMPILE_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM

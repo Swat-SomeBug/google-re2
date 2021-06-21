@@ -1,0 +1,7 @@
+: POSSIBLE_MATCH_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM

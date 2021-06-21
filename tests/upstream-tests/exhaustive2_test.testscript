@@ -1,0 +1,7 @@
+: EXHAUSTIVE2_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM

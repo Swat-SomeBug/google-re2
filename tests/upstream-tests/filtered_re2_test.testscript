@@ -1,0 +1,7 @@
+: FILTERED_RE2_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM

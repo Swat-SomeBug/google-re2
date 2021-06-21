@@ -1,0 +1,7 @@
+: DFA_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM

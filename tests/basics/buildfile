@@ -1,3 +1,0 @@
-import libs = re2%lib{re2}
-
-exe{driver}: {hxx ixx txx cxx}{**} $libs testscript{**}

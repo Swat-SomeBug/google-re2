@@ -2,8 +2,11 @@
 pub = [dir_path] ../include
 include $pub
 
-lib{re2}: $pub/{$($pub/ pub_hdrs)} hxx{**} cxx{**}
+libul{re2_int}: $pub/{$($pub/ pub_hdrs)} hxx{**} cxx{**}
+libs{re2}: def{re2}: include = ($cxx.id=='msvc')
 
+
+./: lib{re2}: libul{re2_int}
 # Build options.
 #
 out_pfx_inc = [dir_path] $out_root/include/
@@ -11,12 +14,23 @@ src_pfx_inc = [dir_path] $src_root/include/
 cxx.poptions =+ "-I$out_root" "-I$src_root" \
                 "-I$src_pfx_inc" "-I$src_base"
 
-# Export options.
-#
-lib{re2}: cxx.export.poptions = "-I$out_root" "-I$src_root" "-I$src_pfx_inc"
+if($cxx.id == 'msvc')
+{
+  cxx.coptions += /wd4100 /wd4201 /wd4456 \
+                  /wd4457 /wd4702 /wd4815 /utf-8
+}
 
 if($cxx.target.class != windows)
   cxx.libs = -lpthread
+else
+{
+  cxx.poptions += -DUNICODE -D_UNICODE -DSTRICT -DNOMINMAX \
+                  -D_CRT_SECURE_NO_WARNINGS -D_SCL_SECURE_NO_WARNINGS
+}
+
+# Export options.
+#
+lib{re2}: cxx.export.poptions = "-I$out_root" "-I$src_root" "-I$src_pfx_inc"
 
 # For pre-releases use the complete version to make sure they cannot be used
 # in place of another pre-release or the final version. See the version module

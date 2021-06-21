@@ -1,4 +1,4 @@
-project = # Unnamed tests subproject.
+project = 
 
 using config
 using test

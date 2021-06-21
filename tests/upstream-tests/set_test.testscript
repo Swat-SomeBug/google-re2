@@ -1,0 +1,7 @@
+: SET_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM

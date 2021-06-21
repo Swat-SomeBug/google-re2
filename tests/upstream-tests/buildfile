@@ -1,0 +1,42 @@
+import re2_lib = google-re2%lib{re2}
+
+testing_srcs = re2/testing/backtrack \
+               re2/testing/dump \
+               re2/testing/exhaustive_tester \
+               re2/testing/null_walker \
+               re2/testing/regexp_generator \
+               re2/testing/string_generator \
+               re2/testing/tester \
+               util/pcre
+
+liba{testing}: cxx{$testing_srcs} $re2_lib
+
+testing_targets = charclass_test \
+                  compile_test \
+                  filtered_re2_test \
+                  mimics_pcre_test \
+                  parse_test \
+                  possible_match_test \
+                  re2_test \
+                  re2_arg_test \
+                  regexp_test \
+                  required_prefix_test \
+                  search_test \
+                  set_test \
+                  simplify_test \
+                  string_generator_test \
+                  dfa_test \
+                  exhaustive1_test \
+                  exhaustive2_test \
+                  exhaustive3_test \
+                  exhaustive_test \
+                  random_test
+
+for n : $testing_targets
+{
+  ./: exe{$n}: hxx{**} cxx{re2/testing/$n util/test} liba{testing} $re2_lib testscript{$n}
+}
+
+./: exe{regexp_benchmark}: hxx{**} cxx{re2/testing/regexp_benchmark util/benchmark} liba{testing} $re2_lib
+
+cxx.poptions += "-I$src_base"

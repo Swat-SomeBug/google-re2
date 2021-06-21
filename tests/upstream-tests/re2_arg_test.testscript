@@ -1,0 +1,7 @@
+: RE2_ARG_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM

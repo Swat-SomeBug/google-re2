@@ -1,0 +1,7 @@
+: SIMPLIFY_TEST
+$* >>~%EOM%
+%(
+%.*%
+%)+?
+PASS
+EOM
