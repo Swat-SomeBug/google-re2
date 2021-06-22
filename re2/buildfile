@@ -3,7 +3,12 @@ pub = [dir_path] ../include
 include $pub
 
 libul{re2_int}: $pub/{$($pub/ pub_hdrs)} hxx{**} cxx{**}
-libs{re2}: def{re2}: include = ($cxx.id=='msvc')
+#libs{re2}: def{re2}: include = ($cxx.id=='msvc') -> Updated with build2-staged version
+libs{re2}: def{re2}: include = ($cxx.target.system == 'win32-msvc')
+def{re2}: libul{re2_int}
+
+if ($cxx.target.system == 'mingw32')
+  cxx.loptions += -Wl,--export-all-symbols
 
 
 ./: lib{re2}: libul{re2_int}
@@ -40,6 +45,5 @@ if $version.pre_release
   lib{re2}: bin.lib.version = @"-$version.project_id"
 else
   lib{re2}: bin.lib.version = @"-$version.major.$version.minor" linux@9
-
 
 hxx{**}: install = false
