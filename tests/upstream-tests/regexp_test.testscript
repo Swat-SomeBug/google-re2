@@ -1,7 +1,0 @@
-: REGEXP_TEST
-$* >>~%EOM%
-%(
-%.*%
-%)+?
-PASS
-EOM

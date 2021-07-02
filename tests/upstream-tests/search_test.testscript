@@ -1,7 +1,0 @@
-: SEARCH_TEST
-$* >>~%EOM%
-%(
-%.*%
-%)+?
-PASS
-EOM

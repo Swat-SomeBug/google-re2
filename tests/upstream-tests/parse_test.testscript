@@ -1,7 +1,0 @@
-: PARSE_TEST
-$* >>~%EOM%
-%(
-%.*%
-%)+?
-PASS
-EOM

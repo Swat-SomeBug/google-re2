@@ -35,6 +35,11 @@ testing_targets = charclass_test \
 for n : $testing_targets
 {
   ./: exe{$n}: hxx{**} cxx{re2/testing/$n util/test} liba{testing} $re2_lib testscript{$n}
+  testscript{$n}: in{generic.testscript.in}
+  {
+    in.symbol = '@'
+    testname = $n
+  }
 }
 
 ./: exe{regexp_benchmark}: hxx{**} cxx{re2/testing/regexp_benchmark util/benchmark} liba{testing} $re2_lib

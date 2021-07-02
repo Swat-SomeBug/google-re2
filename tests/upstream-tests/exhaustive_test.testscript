@@ -1,7 +1,0 @@
-: EXHAUSTIVE_TEST
-$* >>~%EOM%
-%(
-%.*%
-%)+?
-PASS
-EOM

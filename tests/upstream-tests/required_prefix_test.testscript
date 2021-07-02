@@ -1,7 +1,0 @@
-: REQUIRED_PREFIX_TEST
-$* >>~%EOM%
-%(
-%.*%
-%)+?
-PASS
-EOM

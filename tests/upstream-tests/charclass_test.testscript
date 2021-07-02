@@ -1,7 +1,0 @@
-: CHARCLASS_TEST
-$* >>~%EOM%
-%(
-%.*%
-%)+?
-PASS
-EOM
