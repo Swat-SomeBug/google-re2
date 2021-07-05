@@ -6,6 +6,6 @@ license: BSD-style
 description-file: UPSTREAM.README.md
 url: https://github.com/google/re2/
 package-email: swat.somebug@gmail.com
-depends: * build2 >= 0.13.0
-depends: * bpkg >= 0.13.0
+depends: * build2 >= 0.14.0-
+depends: * bpkg >= 0.14.0-
 #depends: libhello ^1.0.0
